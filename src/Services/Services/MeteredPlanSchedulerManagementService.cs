@@ -324,23 +324,19 @@ public class MeteredPlanSchedulerManagementService
         this.schedulerRepository.Remove(meteredPlanScheduler);
     }
 
-    public  void SendSchedulerEmail(SchedulerManagerViewModel schedulerTask,MeteredAuditLogs meteredAuditItem)
+    public void SendSchedulerEmail(SchedulerManagerViewModel schedulerTask,MeteredAuditLogs meteredAuditItem)
     {
-        var emailContent = new EmailContentModel();
+        EmailContentModel emailContent;
         
-        if ((meteredAuditItem.StatusCode== "Accepted")|| (meteredAuditItem.StatusCode == "Missing"))
-        {
-            //Success
+        if ((meteredAuditItem.StatusCode== "Accepted")|| (meteredAuditItem.StatusCode == "Missing")) {
+            // Success
             emailContent = this.emailHelper.PrepareMeteredEmailContent(schedulerTask.SchedulerName, schedulerTask.SubscriptionName, meteredAuditItem.StatusCode, meteredAuditItem.ResponseJson);
-        }
-        else
-        {
-            //Faliure
+        } else {
+            // Failure
             emailContent = this.emailHelper.PrepareMeteredEmailContent(schedulerTask.SchedulerName, schedulerTask.SubscriptionName, "Failure", meteredAuditItem.ResponseJson);
         }
 
-        if (!string.IsNullOrWhiteSpace(emailContent.ToEmails))
-        {
+        if (!string.IsNullOrWhiteSpace(emailContent.ToEmails)) {
             this.emailService.SendEmail(emailContent);
         }
 

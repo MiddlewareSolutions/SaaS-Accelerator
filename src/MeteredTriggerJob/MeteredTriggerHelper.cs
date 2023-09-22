@@ -253,12 +253,12 @@ public class Executor
             };
             subscriptionUsageLogsRepository.Save(newMeteredAuditLog);
 
-            if ((status == "Accepted"))     
+            if (status == "Accepted")
             {
                 LogLine($"Scheduled Item Id: {item.Id} Meter event Accepted", true);
 
                 //Ignore updating NextRuntime value for OneTime frequency as they always depend on StartTime value
-                Enum.TryParse(item.Frequency, out SchedulerFrequencyEnum itemFrequency);
+                _ = Enum.TryParse(item.Frequency, out SchedulerFrequencyEnum itemFrequency);
                 if (itemFrequency != SchedulerFrequencyEnum.OneTime)
                 {
                     scheduler.NextRunTime = GetNextRunTime(item.NextRunTime ?? item.StartDate, itemFrequency);
@@ -275,7 +275,7 @@ public class Executor
             LogLine($"Scheduled Item Id: {item.Id} Complete Triggering Meter event.", true);
 
             // Check if Sending Email is Enabled
-            _= bool.TryParse(applicationConfigService.GetValueByName("EnablesSuccessfulSchedulerEmail"), out bool enablesSuccessfulSchedulerEmail);
+            _ = bool.TryParse(applicationConfigService.GetValueByName("EnablesSuccessfulSchedulerEmail"), out bool enablesSuccessfulSchedulerEmail);
             _ = bool.TryParse(applicationConfigService.GetValueByName("EnablesFailureSchedulerEmail"), out bool enablesFailureSchedulerEmail);
             if(enablesFailureSchedulerEmail || enablesSuccessfulSchedulerEmail)
             {
@@ -314,7 +314,7 @@ public class Executor
     /// <param name="startDate">Start task Date</param>
     /// <param name="frequency">Task frequency</param>
     /// <returns></returns>
-    private DateTime? GetNextRunTime(DateTime? startDate, SchedulerFrequencyEnum frequency)
+    private static DateTime? GetNextRunTime(DateTime? startDate, SchedulerFrequencyEnum frequency)
     {
         switch (frequency)
         {
