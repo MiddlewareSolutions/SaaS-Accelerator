@@ -40,7 +40,6 @@ public class Program
                 logging.AddConsole();
                 logging.AddDebug();
                 // test
-                logging.AddAzureWebAppDiagnostics();
                 logging.AddEventLog(new EventLogSettings() {
                     LogName = "AdminPortal"
                 });
