@@ -2,6 +2,9 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Logging.EventLog;
+
 namespace Marketplace.SaaS.Accelerator.CustomerSite;
 
 /// <summary>
