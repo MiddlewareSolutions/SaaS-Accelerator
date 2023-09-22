@@ -845,6 +845,7 @@ public class HomeController : BaseController
 
         this.logger.LogError("salut ceci est un test svp.");
         System.Console.WriteLine("ceci est un log natif.");
+        System.Diagnostics.Trace.TraceError("test log avec diagnostics.");
 
         try
         {
