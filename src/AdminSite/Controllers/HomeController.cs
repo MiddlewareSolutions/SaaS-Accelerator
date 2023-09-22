@@ -843,6 +843,9 @@ public class HomeController : BaseController
     {
         var currentUserId = this.userService.GetUserIdFromEmailAddress(this.CurrentUserEmailAddress);
 
+        this.logger.LogError("salut ceci est un test svp.");
+        System.Console.WriteLine("ceci est un log natif.");
+
         try
         {
             this.subscriptionService = new SubscriptionService(this.subscriptionRepository, this.planRepository, currentUserId);
