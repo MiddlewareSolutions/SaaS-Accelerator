@@ -31,12 +31,12 @@ jobs:
     # Run dotnet build and publish
     - name: Build app
       run: |
-        dotnet build ${{ env.CUSTOMER_PROJECT }} --configuration Release
+        dotnet build ${{ env.CUSTOMER_PROJECT }} --configuration Release src
 
     # Run dotnet build and publish
     - name: Build app
       run: |
-        dotnet build ${{ env.PUBLISHER_PROJECT }} --configuration Release
+        dotnet build ${{ env.PUBLISHER_PROJECT }} --configuration Release src
         
     # Run unit tests
     - name: Unit Test
