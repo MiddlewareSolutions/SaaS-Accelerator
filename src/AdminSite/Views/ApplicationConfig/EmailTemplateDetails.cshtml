@@ -21,7 +21,7 @@
             </theader>
             <tbody>
                 <tr>
-                    <td class="text-left">IsActive</td>
+                    <td class="text-left">Is Active</td>
                     <td class="text-left">@Html.CheckBoxFor(model => model.IsActive, new { htmlAttributes = new { type ="checkbox", @class = "float-left", name="IsActive" } })</td>
                 </tr>
                 <tr>
@@ -35,7 +35,7 @@
                 <tr>
                     <td class="text-left">TemplateBody</td>
                     <td class="text-left">
-                        @Html.TextAreaFor(model => model.TemplateBody, new { @class = "form-control" })
+                        @Html.TextAreaFor(model => model.TemplateBody, new { @class = "form-control", style="font-size: 90%; font-family: monospace;" })
                         <span class="font-italic hint-text text-left">Due to the content size, it is recommended to copy the content to an external editor, modify the Template body, paste it back into here and save.</span>
                     </td>
                 </tr>

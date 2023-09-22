@@ -42,10 +42,14 @@
                                             @template.Status
                                         </td>
                                         <td>
-                                            @template.Description
+                                            <i>@template.Description</i>
                                         </td>
                                         <td>
-                                            @template.IsActive
+                                            @if(template.IsActive) {
+                                                <b style="color: green">True</b>
+                                            } else {
+                                                <b style="color: red">False</b>
+                                            }
                                         </td>
                                         <td>
                                             <div class="nav-item dropdown">
