@@ -2,6 +2,9 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Logging.EventLog;
+
 namespace Marketplace.SaaS.Accelerator.AdminSite;
 
 /// <summary>
@@ -20,6 +23,7 @@ public class Program
         {
             builder
                 .AddDebug()
+                .AddSimpleConsole()
                 .AddConsole();
         });
 
@@ -39,6 +43,10 @@ public class Program
                 logging.ClearProviders();
                 logging.AddConsole();
                 logging.AddDebug();
+                // test
+                logging.AddEventLog(new EventLogSettings() {
+                    LogName = "EFR-Admin"
+                });
             })
             .ConfigureWebHostDefaults(webBuilder =>
             {

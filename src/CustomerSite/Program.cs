@@ -44,7 +44,7 @@ public class Program
                 logging.AddDebug();
                 // test
                 logging.AddEventLog(new EventLogSettings() {
-                    LogName = "AdminPortal"
+                    LogName = "EFR-Portal"
                 });
             })
             .ConfigureWebHostDefaults(webBuilder =>
